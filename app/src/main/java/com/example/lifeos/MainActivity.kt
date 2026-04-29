@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.navigation.compose.rememberNavController
 import com.example.lifeos.core.ui.theme.LifeOSTheme
-import com.example.lifeos.features.home.ui.BottomBarNavigation
+import com.example.lifeos.core.ui.components.BottomBarNavigation
 import com.example.lifeos.navigation.AppNavHost
 
 class MainActivity : ComponentActivity() {

@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.lifeos.constant.AppDestinations
+import com.example.lifeos.features.home.HomeScreen
 
 
 @Composable
@@ -20,9 +21,7 @@ fun AppNavHost(
     ) {
 
         composable(AppDestinations.HOME.route) {
-            /*
-            ExamplePage()
-            */
+            HomeScreen()
         }
 
         composable(AppDestinations.FAVORITES.route) {  }

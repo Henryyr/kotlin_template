@@ -1,4 +1,4 @@
-package com.example.lifeos.features.home.ui
+package com.example.lifeos.core.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
