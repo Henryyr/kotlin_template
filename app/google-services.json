@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1015397818768",
+    "project_id": "gaetdriver",
+    "storage_bucket": "gaetdriver.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015397818768:android:fc701aeee4457cafcad315",
+        "android_client_info": {
+          "package_name": "com.example.gaetdriver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaLD6kMTPBJb2WEBB6_fV8StttUGzCVhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
