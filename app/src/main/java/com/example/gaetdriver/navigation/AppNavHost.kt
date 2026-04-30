@@ -6,11 +6,16 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.gaetdriver.constant.AppNavDestinations
+import com.example.gaetdriver.core.firebase.AuthManager
 import com.example.gaetdriver.features.home.HomeScreen
+import com.example.gaetdriver.features.activity.ActivityScreen
+import com.example.gaetdriver.features.library.LibraryScreen
+import com.example.gaetdriver.features.profile.ProfileScreen
 
 
 @Composable
 fun AppNavHost(
+    authManager: AuthManager,
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
@@ -24,14 +29,18 @@ fun AppNavHost(
             HomeScreen()
         }
 
-        composable(AppNavDestinations.FAVORITES.route) {  }
-
-        composable(AppNavDestinations.ADD.route) {  }
-
-        composable(AppNavDestinations.PROFILE.route) {
+        composable(AppNavDestinations.ACTIVITY.route) {
+            ActivityScreen()
         }
 
-        composable(AppNavDestinations.SETTINGS.route) {
+
+
+        composable(AppNavDestinations.LIBRARY.route) {
+            LibraryScreen()
+        }
+
+        composable(AppNavDestinations.PROFILE.route) {
+            ProfileScreen(authManager = authManager)
         }
 
     }

@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
@@ -41,7 +42,7 @@ fun BottomBarNavigation(
 
     if (isExpanded) {
         NavigationRail(
-            containerColor = Color.White.copy(alpha = 0.9f),
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
             modifier = Modifier
                 .padding(16.dp)
                 .clip(RoundedCornerShape(24.dp)),
@@ -50,11 +51,11 @@ fun BottomBarNavigation(
                     modifier = Modifier
                         .size(60.dp)
                         .clip(RoundedCornerShape(16.dp))
-                        .background(Color(0xFFFF4917))
+                        .background(MaterialTheme.colorScheme.primary)
                         .clickable { onAddClick() },
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(painterResource(AppNavDestinations.ADD.icon), null, tint = Color.White)
+                    Icon(painterResource(AppNavDestinations.ADD.icon), null, tint = MaterialTheme.colorScheme.onPrimary)
                 }
             }
         ) {
@@ -66,8 +67,8 @@ fun BottomBarNavigation(
                     icon = { Icon(painterResource(destination.icon), null) },
                     label = { Text(destination.label) },
                     colors = NavigationRailItemDefaults.colors(
-                        selectedIconColor = Color.Black,
-                        unselectedIconColor = Color.Gray,
+                        selectedIconColor = MaterialTheme.colorScheme.primary,
+                        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                         indicatorColor = Color.Transparent
                     )
                 )
@@ -97,7 +98,7 @@ fun BottomBarNavigation(
                             .size(if (isAdd) 70.dp else 60.dp)
                             .clip(RoundedCornerShape(16.dp))
                             .background(
-                                if (isAdd) Color(0xFFFF4917) else Color.White
+                                if (isAdd) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface
                             )
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
@@ -110,11 +111,11 @@ fun BottomBarNavigation(
                         Icon(
                             painterResource(destination.icon),
                             contentDescription = destination.route,
-                            modifier = Modifier.size(40.dp),
+                            modifier = Modifier.size(30.dp),
                             tint = when {
-                                isAdd -> Color.White
-                                isActive -> Color.Black
-                                else -> Color.Gray
+                                isAdd -> MaterialTheme.colorScheme.onPrimary
+                                isActive -> MaterialTheme.colorScheme.primary
+                                else -> MaterialTheme.colorScheme.onSurfaceVariant
                             }
                         )
                     }

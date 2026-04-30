@@ -1,17 +1,19 @@
-package com.example.gaetdriver.features.home
+package com.example.gaetdriver.features.library
 
 import androidx.compose.runtime.Composable
 import com.example.gaetdriver.core.ui.components.EmptyState
 import com.example.gaetdriver.core.ui.layout.ViewLayout
+
 @Composable
-fun HomeScreen() {
+fun LibraryScreen() {
     ViewLayout(
         header = {
+            // Placeholder for Library Header
         },
         body = {
             EmptyState(
-                message = "Home",
-                description = "Home and Display Catalog is here."
+                message = "Library is Empty",
+                description = "Manage all your data, filter, and search from here."
             )
         }
     )

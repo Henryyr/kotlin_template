@@ -2,31 +2,38 @@ package com.example.gaetdriver.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Brand Colors
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+/**
+ * Signature Orange Palette
+ */
+// Light Mode
+val PrimaryOrange = Color(0xFFFF4917)
+val OnPrimaryOrange = Color.White
+val PrimaryContainerOrange = Color(0xFFFFDBD1)
+val OnPrimaryContainerOrange = Color(0xFF3B0900)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Dark Mode
+val PrimaryOrangeDark = Color(0xFFFFB4A1)
+val OnPrimaryOrangeDark = Color(0xFF5E1700)
+val PrimaryContainerOrangeDark = Color(0xFF8D2200)
+val OnPrimaryContainerOrangeDark = Color(0xFFFFDBD1)
 
-// Semantic Colors (Success, Warning, Error, Info)
+// Secondary / Neutral
+val SecondaryGrey = Color(0xFF77574E)
+val OnSecondaryGrey = Color.White
+val TertiaryGreen = Color(0xFF6C5D2F)
+
+// Backgrounds
+val BackgroundLight = Color(0xFFF5E8E0)
+val SurfaceLight = Color(0xFFFFFFFF)
+val BackgroundDark = Color(0xFF1A1110)
+val SurfaceDark = Color(0xFF2D2321)
+
+// Semantic
 val Success = Color(0xFF4CAF50)
-val OnSuccess = Color.White
 val Warning = Color(0xFFFFC107)
-val OnWarning = Color.Black
-val Error = Color(0xFFF44336)
-val OnError = Color.White
+val Error = Color(0xFFBA1A1A)
 val Info = Color(0xFF2196F3)
-val OnInfo = Color.White
 
-// Neutral / Surfaces
-val SurfaceLight = Color(0xFFFDFDFD)
-val SurfaceDark = Color(0xFF1C1B1F)
-val BackgroundLight = Color(0xFFEDE1D8)
-val BackgroundDark = Color(0xFF121212)
-
-// Custom Accents (Example for template)
-val AccentOrange = Color(0xFFFF4917)
-val OnAccentOrange = Color.White
+// Deprecated (kept for temporary compatibility if needed, but we should use PrimaryOrange)
+val AccentOrange = PrimaryOrange
+val OnAccentOrange = OnPrimaryOrange
