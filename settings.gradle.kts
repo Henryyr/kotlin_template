@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LifeOS"
+rootProject.name = "GaetDriver"
 include(":app")
  

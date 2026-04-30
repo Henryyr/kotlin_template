@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.lifeos"
+    namespace = "com.example.gaetdriver"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.lifeos"
+        applicationId = "com.example.gaetdriver"
         minSdk = 24
         //noinspection OldTargetApi
         targetSdk = 36
