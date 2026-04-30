@@ -23,7 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.lifeos.constant.AppDestinations
+import com.example.lifeos.constant.AppNavDestinations
 
 @Composable
 fun BottomBarNavigation(navController: NavController) {
@@ -46,9 +46,9 @@ fun BottomBarNavigation(navController: NavController) {
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            AppDestinations.entries.forEach { destination ->
+            AppNavDestinations.entries.forEach { destination ->
 
-                val isAdd = destination == AppDestinations.ADD
+                val isAdd = destination == AppNavDestinations.ADD
                 val isActive = currentDestination == destination.route
 
 

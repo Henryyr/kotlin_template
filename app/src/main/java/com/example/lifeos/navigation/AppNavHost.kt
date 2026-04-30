@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.lifeos.constant.AppDestinations
+import com.example.lifeos.constant.AppNavDestinations
 import com.example.lifeos.features.home.HomeScreen
 
 
@@ -16,22 +16,22 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = AppDestinations.HOME.route,
+        startDestination = AppNavDestinations.HOME.route,
         modifier = modifier
     ) {
-
-        composable(AppDestinations.HOME.route) {
+        
+        composable(AppNavDestinations.HOME.route) {
             HomeScreen()
         }
 
-        composable(AppDestinations.FAVORITES.route) {  }
+        composable(AppNavDestinations.FAVORITES.route) {  }
 
-        composable(AppDestinations.ADD.route) {  }
+        composable(AppNavDestinations.ADD.route) {  }
 
-        composable(AppDestinations.PROFILE.route) {
+        composable(AppNavDestinations.PROFILE.route) {
         }
 
-        composable(AppDestinations.SETTING.route) {
+        composable(AppNavDestinations.SETTINGS.route) {
         }
 
     }

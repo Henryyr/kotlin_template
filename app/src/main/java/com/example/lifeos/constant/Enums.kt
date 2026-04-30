@@ -2,20 +2,14 @@ package com.example.lifeos.constant
 
 import com.example.lifeos.R
 
-enum class AppDestinations(
+enum class AppNavDestinations(
     val route: String,
     val icon: Int,
+    val label: String
 ) {
-    HOME("home",  R.drawable.ic_home),
-    SETTING("favorite",  R.drawable.ic_favorite),
-    ADD(route = "add", R.drawable.ic_add),
-    FAVORITES("profile",  R.drawable.ic_account_box),
-    PROFILE("setting",  R.drawable.ic_settings),
+    HOME(route = "home", icon = R.drawable.ic_home, label = "Home"),
+    FAVORITES(route = "favorites", icon = R.drawable.ic_favorite, label = "Favorites"),
+    ADD(route = "add", icon = R.drawable.ic_add, label = "Add"),
+    PROFILE(route = "profile", icon = R.drawable.ic_account_box, label = "Profile"),
+    SETTINGS(route = "settings", icon = R.drawable.ic_settings, label = "Settings")
 }
-
-//enum class Status(
-//    val label: String,
-//) {
-//    ACTIVES("Actives", ),
-//    UNACTIVES("Unactives"),
-//}
