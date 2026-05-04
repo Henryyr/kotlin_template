@@ -7,12 +7,13 @@ plugins {
 
 android {
     namespace = "com.example.gaetdriver"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.example.gaetdriver"
         minSdk = 24
-        targetSdk = 35
+        //noinspection OldTargetApi
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
