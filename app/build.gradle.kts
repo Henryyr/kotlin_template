@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
 }
 
@@ -15,8 +16,7 @@ android {
     defaultConfig {
         applicationId = "com.example.gaetdriver"
         minSdk = 24
-        //noinspection OldTargetApi
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -59,6 +59,10 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.datastore.preferences)
+    
+    implementation("cafe.adriel.lyricist:lyricist:1.7.0")
+    ksp("cafe.adriel.lyricist:lyricist-processor:1.7.0")
+    
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.auth)

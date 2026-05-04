@@ -30,6 +30,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.gaetdriver.constant.AppNavDestinations
 import androidx.window.core.layout.WindowSizeClass
+import com.example.gaetdriver.core.base.i18n.LocalStrings
 
 @Composable
 fun BottomBarNavigation(
@@ -39,6 +40,7 @@ fun BottomBarNavigation(
 ) {
     val currentDestination = navController.currentBackStackEntryAsState().value?.destination?.route
     val isExpanded = windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND)
+    val strings = LocalStrings.current
 
     if (isExpanded) {
         NavigationRail(
@@ -61,11 +63,19 @@ fun BottomBarNavigation(
         ) {
             AppNavDestinations.entries.filter { it != AppNavDestinations.ADD }.forEach { destination ->
                 val isActive = currentDestination == destination.route
+                val label = when(destination) {
+                    AppNavDestinations.HOME -> strings.home
+                    AppNavDestinations.ACTIVITY -> strings.activity
+                    AppNavDestinations.LIBRARY -> strings.library
+                    AppNavDestinations.PROFILE -> strings.profile
+                    else -> strings.home
+                }
+
                 NavigationRailItem(
                     selected = isActive,
                     onClick = { navController.navigate(destination.route) },
                     icon = { Icon(painterResource(destination.icon), null) },
-                    label = { Text(destination.label) },
+                    label = { Text(label) },
                     colors = NavigationRailItemDefaults.colors(
                         selectedIconColor = MaterialTheme.colorScheme.primary,
                         unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,

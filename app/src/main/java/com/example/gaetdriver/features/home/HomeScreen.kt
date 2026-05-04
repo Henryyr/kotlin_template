@@ -1,17 +1,19 @@
 package com.example.gaetdriver.features.home
 
 import androidx.compose.runtime.Composable
+import com.example.gaetdriver.core.base.i18n.LocalStrings
 import com.example.gaetdriver.core.ui.components.EmptyState
 import com.example.gaetdriver.core.ui.layout.ViewLayout
 @Composable
 fun HomeScreen() {
+    val strings = LocalStrings.current
     ViewLayout(
         header = {
         },
         body = {
             EmptyState(
-                message = "Home",
-                description = "Home and Display Catalog is here."
+                message = strings.home,
+                description = strings.homeDescription
             )
         }
     )

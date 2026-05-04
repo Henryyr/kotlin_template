@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.gaetdriver.core.base.i18n.LocalStrings
 import com.example.gaetdriver.core.firebase.AuthManager
 import com.example.gaetdriver.core.ui.components.SectionHeader
 import com.example.gaetdriver.core.ui.layout.ViewLayout
@@ -33,6 +34,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ProfileScreen(authManager: AuthManager) {
+    val strings = LocalStrings.current
     val context = LocalContext.current
     val deviceManager = remember { DeviceManager(context) }
     val themeMode by deviceManager.themeMode.collectAsState(initial = "system")
@@ -40,7 +42,7 @@ fun ProfileScreen(authManager: AuthManager) {
 
     ViewLayout(
         header = {
-            SectionHeader(title = "Profile Settings")
+            SectionHeader(title = strings.profileSettings)
         },
         body = {
 
@@ -51,19 +53,19 @@ fun ProfileScreen(authManager: AuthManager) {
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Text(
-                        text = "Theme Preference",
+                        text = strings.themePreference,
                         style = MaterialTheme.typography.titleMedium
                     )
 
-                    ThemeOption("System Default", themeMode == "system") {
+                    ThemeOption(strings.systemDefault, themeMode == "system") {
                         scope.launch { deviceManager.saveThemeMode("system") }
                     }
 
-                    ThemeOption("Light Mode", themeMode == "light") {
+                    ThemeOption(strings.lightMode, themeMode == "light") {
                         scope.launch { deviceManager.saveThemeMode("light") }
                     }
 
-                    ThemeOption("Dark Mode", themeMode == "dark") {
+                    ThemeOption(strings.darkMode, themeMode == "dark") {
                         scope.launch { deviceManager.saveThemeMode("dark") }
                     }
                 }

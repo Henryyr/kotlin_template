@@ -13,6 +13,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +33,8 @@ import com.example.gaetdriver.features.login.LoginScreen
 import com.example.gaetdriver.navigation.AppNavHost
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.window.core.layout.WindowSizeClass
+import com.example.gaetdriver.core.base.i18n.LocalStrings
+import com.example.gaetdriver.core.base.i18n.rememberStrings
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +50,7 @@ class MainActivity : ComponentActivity() {
 @PreviewScreenSizes
 @Composable
 fun GaetDriverApp() {
+    val strings = rememberStrings()
     val navController = rememberNavController()
     val adaptiveInfo = currentWindowAdaptiveInfo()
     val isExpanded = adaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND)
@@ -64,57 +68,61 @@ fun GaetDriverApp() {
         else -> isSystemInDarkTheme()
     }
 
-    GaetDriverTheme(darkTheme = darkTheme) {
-        var showAddOptions by remember { mutableStateOf(false) }
-        val sheetState = rememberModalBottomSheetState()
+    CompositionLocalProvider(LocalStrings provides strings) {
+        GaetDriverTheme(darkTheme = darkTheme) {
+            var showAddOptions by remember { mutableStateOf(false) }
+            val sheetState = rememberModalBottomSheetState()
 
-        val mediaManager = rememberMediaManager(
-            onImageCaptured = { bitmap ->
-                Log.d("Camera", "Captured bitmap: $bitmap")
-            },
-            onImageSelected = { uri ->
-                Log.d("PhotoPicker", "Selected URI: $uri")
-            }
-        )
+            val mediaManager = rememberMediaManager(
+                onImageCaptured = { bitmap ->
+                    Log.d("Camera", "Captured bitmap: $bitmap")
+                },
+                onImageSelected = { uri ->
+                    Log.d("PhotoPicker", "Selected URI: $uri")
+                }
+            )
 
-        if (!isLoggedIn) {
-            LoginScreen(authManager = authManager)
-        } else {
-            Scaffold(
-                modifier = Modifier.fillMaxSize(),
-                bottomBar = {
-                    if (!isExpanded) {
-                        BottomBarNavigation(
+            if (!isLoggedIn) {
+                LoginScreen(authManager = authManager)
+            } else {
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = {
+                        if (!isExpanded) {
+                            BottomBarNavigation(
+                                navController = navController,
+                                windowSizeClass = adaptiveInfo.windowSizeClass,
+                                onAddClick = { showAddOptions = true }
+                            )
+                        }
+                    }
+                ) { innerPadding ->
+                    Row(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize()
+                    ) {
+                        AppNavHost(
+                            authManager = authManager,
                             navController = navController,
-                            windowSizeClass = adaptiveInfo.windowSizeClass,
-                            onAddClick = { showAddOptions = true }
+                            modifier = Modifier.weight(1f)
                         )
                     }
-                }
-            ) { innerPadding ->
-                Row(modifier = Modifier
-                    .padding(innerPadding)
-                    .fillMaxSize()) {
-                    AppNavHost(
-                        authManager = authManager,
-                        navController = navController,
-                        modifier = Modifier.weight(1f)
-                    )
-                }
 
-                if (showAddOptions) {
-                    AddOptionsBottomSheet(
-                        sheetState = sheetState,
-                        onDismissRequest = { showAddOptions = false },
-                        onCameraClick = {
-                            mediaManager.launchCamera()
-                            showAddOptions = false
-                        },
-                        onGalleryClick = {
-                            mediaManager.launchGallery()
-                            showAddOptions = false
-                        }
-                    )
+                    if (showAddOptions) {
+                        AddOptionsBottomSheet(
+                            sheetState = sheetState,
+                            onDismissRequest = { showAddOptions = false },
+                            onCameraClick = {
+                                mediaManager.launchCamera()
+                                showAddOptions = false
+                            },
+                            onGalleryClick = {
+                                mediaManager.launchGallery()
+                                showAddOptions = false
+                            }
+                        )
+                    }
                 }
             }
         }

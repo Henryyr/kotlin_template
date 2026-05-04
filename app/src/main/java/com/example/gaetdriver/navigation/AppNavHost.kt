@@ -12,7 +12,6 @@ import com.example.gaetdriver.features.activity.ActivityScreen
 import com.example.gaetdriver.features.library.LibraryScreen
 import com.example.gaetdriver.features.profile.ProfileScreen
 
-
 @Composable
 fun AppNavHost(
     authManager: AuthManager,
@@ -24,7 +23,6 @@ fun AppNavHost(
         startDestination = AppNavDestinations.HOME.route,
         modifier = modifier
     ) {
-        
         composable(AppNavDestinations.HOME.route) {
             HomeScreen()
         }
@@ -34,7 +32,6 @@ fun AppNavHost(
         }
 
 
-
         composable(AppNavDestinations.LIBRARY.route) {
             LibraryScreen()
         }
@@ -42,6 +39,5 @@ fun AppNavHost(
         composable(AppNavDestinations.PROFILE.route) {
             ProfileScreen(authManager = authManager)
         }
-
     }
 }

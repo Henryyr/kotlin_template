@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.gaetdriver.core.base.i18n.LocalStrings
 import com.example.gaetdriver.core.firebase.AuthManager
 
 @Composable
@@ -33,6 +34,8 @@ fun LoginBody(
     isLoginMode: Boolean,
     onModeToggle: () -> Unit
 ) {
+    val strings = LocalStrings.current
+    
     // These states will automatically reset when LoginScreen changes the 'key'
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -54,7 +57,7 @@ fun LoginBody(
             OutlinedTextField(
                 value = firstName,
                 onValueChange = { firstName = it },
-                label = { Text("First Name") },
+                label = { Text(strings.firstName) },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
                 enabled = !isLoading
@@ -63,7 +66,7 @@ fun LoginBody(
             OutlinedTextField(
                 value = lastName,
                 onValueChange = { lastName = it },
-                label = { Text("Last Name") },
+                label = { Text(strings.lastName) },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
                 enabled = !isLoading
@@ -72,7 +75,7 @@ fun LoginBody(
             OutlinedTextField(
                 value = phone,
                 onValueChange = { phone = it },
-                label = { Text("Phone Number") },
+                label = { Text(strings.phoneNumber) },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
                 enabled = !isLoading
@@ -82,7 +85,7 @@ fun LoginBody(
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Email") },
+            label = { Text(strings.email) },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
             enabled = !isLoading
@@ -91,7 +94,7 @@ fun LoginBody(
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Password") },
+            label = { Text(strings.password) },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
             enabled = !isLoading
@@ -133,7 +136,7 @@ fun LoginBody(
                 )
             } else {
                 Text(
-                    if (isLoginMode) "Login" else "Sign Up",
+                    if (isLoginMode) strings.login else strings.signUp,
                     style = MaterialTheme.typography.titleMedium
                 )
             }
@@ -145,8 +148,8 @@ fun LoginBody(
             enabled = !isLoading
         ) {
             Text(
-                if (isLoginMode) "Don't have an account? Sign Up" 
-                else "Already have an account? Login"
+                if (isLoginMode) strings.dontHaveAccount
+                else strings.alreadyHaveAccount
             )
         }
     }
