@@ -2,7 +2,9 @@ package com.example.gaetdriver.features.library
 
 import androidx.compose.runtime.Composable
 import com.example.gaetdriver.core.base.i18n.LocalStrings
+import com.example.gaetdriver.core.ui.components.AppCard
 import com.example.gaetdriver.core.ui.components.EmptyState
+import com.example.gaetdriver.core.ui.components.SectionHeader
 import com.example.gaetdriver.core.ui.layout.ViewLayout
 
 @Composable
@@ -10,13 +12,15 @@ fun LibraryScreen() {
     val strings = LocalStrings.current
     ViewLayout(
         header = {
-            // Placeholder for Library Header
+            SectionHeader(title = strings.library)
         },
         body = {
-            EmptyState(
-                message = strings.libraryEmpty,
-                description = strings.libraryDescription
-            )
+            AppCard {
+                EmptyState(
+                    message = strings.libraryEmpty,
+                    description = strings.libraryDescription
+                )
+            }
         }
     )
 }
