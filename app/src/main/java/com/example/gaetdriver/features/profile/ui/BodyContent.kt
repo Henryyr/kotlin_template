@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import com.example.gaetdriver.core.base.i18n.LocalStrings
 import com.example.gaetdriver.core.firebase.AuthManager
 import com.example.gaetdriver.core.ui.components.AppButton
-import com.example.gaetdriver.core.ui.components.AppCard
 import com.example.gaetdriver.core.ui.components.ButtonStyle
 import com.example.gaetdriver.core.utils.DeviceManager
 import kotlinx.coroutines.launch
@@ -41,7 +40,6 @@ fun BodyContent(authManager: AuthManager) {
             .padding(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
-        AppCard {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -62,16 +60,18 @@ fun BodyContent(authManager: AuthManager) {
                 ThemeOption(strings.darkMode, themeMode == "dark") {
                     scope.launch { deviceManager.saveThemeMode("dark") }
                 }
+
+                AppButton(
+                    text = strings.logout,
+                    onClick = { authManager.signOut() },
+                    style = ButtonStyle.Outline,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
             }
         }
 
-        AppButton(
-            text = strings.logout,
-            onClick = { authManager.signOut() },
-            style = ButtonStyle.Outline,
-            modifier = Modifier.fillMaxWidth()
-        )
-    }}
+    }
 
 @Composable
 fun ThemeOption(

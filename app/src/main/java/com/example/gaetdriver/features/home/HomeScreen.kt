@@ -2,7 +2,6 @@ package com.example.gaetdriver.features.home
 
 import androidx.compose.runtime.Composable
 import com.example.gaetdriver.core.base.i18n.LocalStrings
-import com.example.gaetdriver.core.ui.components.AppCard
 import com.example.gaetdriver.core.ui.components.EmptyState
 import com.example.gaetdriver.core.ui.components.SectionHeader
 import com.example.gaetdriver.core.ui.layout.ViewLayout
@@ -15,12 +14,12 @@ fun HomeScreen() {
             SectionHeader(title = strings.home)
         },
         body = {
-            AppCard {
+
                 EmptyState(
                     message = strings.home,
                     description = strings.homeDescription
                 )
-            }
+
         }
     )
 }
