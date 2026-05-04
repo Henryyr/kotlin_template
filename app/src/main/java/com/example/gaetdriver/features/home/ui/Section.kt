@@ -21,7 +21,7 @@ fun Section(
     title: String,
     content: @Composable () -> Unit
 ) {
-    Column(modifier = Modifier.padding(vertical = 8.dp)) {
+    Column(verticalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.padding(vertical = 8.dp)) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) { Icon(
             imageVector = icon,
@@ -29,7 +29,6 @@ fun Section(
             tint = Color.Gray
         )
             Text(title, color = Color.Gray, style = MaterialTheme.typography.titleMedium)}
-        Spacer(modifier = Modifier.height(8.dp))
         content()
     }
 }

@@ -7,11 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.gaetdriver"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.gaetdriver"
@@ -38,6 +34,25 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+
+    flavorDimensions += "environment"
+    productFlavors {
+        create("dev") {
+            dimension = "environment"
+            versionNameSuffix = "-dev"
+            buildConfigField("String", "BASE_URL", "\"https://api.dev.lifeos.com/\"")
+        }
+        create("staging") {
+            dimension = "environment"
+            versionNameSuffix = "-staging"
+            buildConfigField("String", "BASE_URL", "\"https://api.staging.lifeos.com/\"")
+        }
+        create("prod") {
+            dimension = "environment"
+            buildConfigField("String", "BASE_URL", "\"https://api.lifeos.com/\"")
+        }
     }
 }
 
@@ -60,8 +75,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.datastore.preferences)
     
-    implementation("cafe.adriel.lyricist:lyricist:1.7.0")
-    ksp("cafe.adriel.lyricist:lyricist-processor:1.7.0")
+    implementation(libs.lyricist)
+    ksp(libs.lyricist.processor)
     
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
